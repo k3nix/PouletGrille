@@ -10,7 +10,21 @@
 #endif
 #include "LiquidCrystal.h"
 
+void cle(){}
 
+void code() {}
+
+void fils() {}
+
+//-------------------------------------- fin des fonctions primaires
+
+void cleCode() {}
+
+void cleFils() {}
+
+void codeFils() {}
+
+void cleCodeFils() {}
 
 #endif
 
