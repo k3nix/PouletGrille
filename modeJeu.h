@@ -8,7 +8,6 @@
 #else
 	#include "WProgram.h"
 #endif
-#include "LiquidCrystal.h"
 
 void cle(){}
 
