@@ -3,11 +3,13 @@
 // 
 
 #include "menus.h"
-
+extern LiquidCrystal LCD;
+extern Keypad keypad;
+extern const char NO_KEY;
 
 void choixModeJeu()
 {
-
+	
 }
 
 void setupTempsDePartie()
