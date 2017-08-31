@@ -41,5 +41,10 @@ void cleCodeFils() // mode clé + code + fils
 
 }
 
+void modeDrapeaux() // mode drapeaux 
+{
+
+}
+
 //.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 // Fin des fonctions principales inserer les fonctions annexes en dessous
