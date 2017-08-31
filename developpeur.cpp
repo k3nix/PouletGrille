@@ -11,7 +11,7 @@ void clignioteG()
 		digitalWrite(44, HIGH);
 		delay(1000);
 		digitalWrite(44, LOW);
-		delay(1000);
+		delay(500); //modif 1
 	} while (true);
 	
 }
