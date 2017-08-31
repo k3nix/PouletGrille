@@ -13,5 +13,4 @@ void clignioteG()
 		digitalWrite(44, LOW);
 		delay(500); //c'est adrien qui code
 	} while (true);
-	
 }
