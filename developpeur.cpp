@@ -12,7 +12,7 @@ void clignioteG()
 		delay(1000);
 		digitalWrite(44, LOW);
 		delay(500); //modif 12 pout le compare
-		//branche simon 
+		//branche simon push request adri
 	} while (true);
 	
 }
