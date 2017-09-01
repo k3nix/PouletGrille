@@ -37,15 +37,15 @@ void setup() //fonction lancée une seule fois au demmarage de l'arduino
 
 	LCD.begin(16, 2); //on declare 16 colonnes et 2 lignes
 	LCD.print("Gyromitres Bomb");
-<<<<<<< HEAD
+
 	LCD.setCursor(0, 1); // on passe a la deuxiemme ligne
 	LCD.print("Version 0.4");
 	delay(500);
-=======
+
 	LCD.setCursor(0, 1); // on passe a la deuciemme ligne
 	LCD.print("Version 0.3");
 	delay(2000);
->>>>>>> 73d04f57fac2b5d91e25feba03da3e69848f7a1a
+
 
 	LCD.clear();
 
