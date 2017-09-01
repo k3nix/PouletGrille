@@ -10,7 +10,8 @@
 #endif
 
 bool choixJeu();
-void setupTempsDePartie();
+//void setupTempsDePartie();
+int setupTempsDePartie();
 
 #endif
 

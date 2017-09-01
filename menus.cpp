@@ -7,12 +7,13 @@
 #include "Keypad.h"
 #include "developpeur.h"
 
+
 extern int pinBT1, pinBT2, pinBT3, pinBT4, pinBT5, pinCLE1, pinCLE2, pinCLE3;
 extern LiquidCrystal LCD;
 extern Keypad keypad;
 extern const char NO_KEY;
 
-char tempsDePartie[6] = { 0,0,1,5,0,0 }; //Par defaut 15 minutes
+//char tempsDePartie[6] = { 0,0,1,5,0,0 }; //Par defaut 15 minutes
 
 bool choixJeu()
 {
@@ -139,7 +140,7 @@ bool choixJeu()
 	return modeCle, modeCode, modeFils;
 }
 
-
+/*
 void setupTempsDePartie()
 {
 	int touche = 0;
@@ -151,10 +152,10 @@ void setupTempsDePartie()
 	LCD.print("Temps de partie?");
 	LCD.setCursor(1, 0);
 
-	while (i < 3)
+	while (i < 3) // 3 groupes de 2 chiffres hh:mm:ss
 	{
 		int J = 0;
-		while (J < 2)
+		while (J < 2) // recuperation des deux chiffres
 		{
 			char key = keypad.getKey(); // affiche le keypad
 
@@ -193,7 +194,7 @@ void setupTempsDePartie()
 			}
 		}
 
-		if (placementEcran == 2 || placementEcran == 5)
+		if (placementEcran == 2 || placementEcran == 5) // placer les deux points
 		{
 			LCD.setCursor(placementEcran, 1);
 			placementEcran += 1;
@@ -226,5 +227,49 @@ void setupTempsDePartie()
 
 
 	delay(500000);
+}
+*/
+int setupTempsDePartie()
+{
+	LCD.clear();
+	LCD.setCursor(0, 0);
+	LCD.print("Temps de partie?");
+	LCD.setCursor(1, 0); // ligne du bas 1 ere case
+
+	char tempsDePartie[8] = { 0,0,':',1,5,':',0,0 }; //position 3 et 6 a ne pas toucher
+	char positionChiffreARemplir = 0;
+	char tour = 0;
+
+
+	while (tour == 8) //on passe 6 fois, 1 pour chaque chiffre + 2 pour les ":"
+	{
+
+		char chiffreEntre = keypad.getKey(); //recupere la touche presse
+
+		if (chiffreEntre != NO_KEY) //si la recuperation n'es pas vide
+		{
+			if (tour != 3 || 6)
+			{
+				tempsDePartie[tour] = chiffreEntre;
+
+				LCD.setCursor(tour, 1);
+				LCD.print(chiffreEntre);
+
+				tour++;
+			}
+			else
+			{
+				tour++;
+				LCD.setCursor(tour, 1);
+				LCD.print(tempsDePartie[tour]);
+			}
+
+
+		}
+
+
+
+	}
+
 }
 
