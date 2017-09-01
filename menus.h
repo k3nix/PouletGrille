@@ -9,7 +9,7 @@
 	#include "WProgram.h"
 #endif
 
-void voidchoixModeJeu();
+bool choixJeu();
 void setupTempsDePartie();
 
 #endif

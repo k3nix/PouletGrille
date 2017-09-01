@@ -9,21 +9,21 @@
 	#include "WProgram.h"
 #endif
 
-void cle(){}
+void cle();
 
-void code() {}
+void code();
 
-void fils() {}
+void fils();
 
 //-------------------------------------- fin des fonctions primaires
 
-void cleCode() {}
+void cleCode();
 
-void cleFils() {}
+void cleFils();
 
-void codeFils() {}
+void codeFils();
 
-void cleCodeFils() {}
+void cleCodeFils();
 
 #endif
 

@@ -9,7 +9,7 @@
 	#include "WProgram.h"
 #endif
 
-
+void modeTest();
 void clignioteG();
 
 #endif
