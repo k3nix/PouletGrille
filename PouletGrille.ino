@@ -32,13 +32,13 @@ char tempsDePartie[6] = { 0,0,1,5,0,0 }; //Par defaut 15 minutes
 
 
 
-void setup()
+void setup() //fonction lancée une seule fois au demmarage de l'arduino
 {
 
 	LCD.begin(16, 2); //on declare 16 colonnes et 2 lignes
 	LCD.print("Gyromitres Bomb");
-	LCD.setCursor(0, 1); // on passe a la deuciemme ligne
-	LCD.print("Version 0.3");
+	LCD.setCursor(0, 1); // on passe a la deuxiemme ligne
+	LCD.print("Version 0.4");
 	delay(500);
 
 	LCD.clear();
@@ -52,7 +52,7 @@ void setup()
 	pinMode(pinCLE2, INPUT);
 	pinMode(pinCLE3, INPUT);
 	
-	pinMode(44, OUTPUT); //relais
+	pinMode(44, OUTPUT); //pin du relais --> Lumiere G
 
 	//pinMode(A0, OUTPUT);
 	//pinMode(A1, OUTPUT);
