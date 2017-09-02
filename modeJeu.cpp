@@ -109,7 +109,7 @@ char key = keypad.getKey(); // affiche le keypad
 					LCD.clear();
 					LCD.setCursor(0, 0);
 					delay(100);
-					LCD.print("Entré Le Code :"); //si la touche de désarmement # est pressée, l'utilisateur peux entrer le code.
+					LCD.print("Entre Le Code :"); //si la touche de désarmement # est pressée, l'utilisateur peux entrer le code.
 					while (i < 3)
 					{
 						int J = 0;
@@ -138,7 +138,7 @@ char key = keypad.getKey(); // affiche le keypad
 								LCD.clear();
 								bombEtat = ARMEE; //debut du compte a rebours
 							}
-							case '*':
+							case '*': //Efface la saisi
 							{
 								if (placementEcran < 1)
 								{
