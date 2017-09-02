@@ -24,8 +24,8 @@ char keys[4][3] = {
 	{ '7','8','9' },
 	{ '*','0','#' }
 };
-byte rowPins[4] = { 7, 6, 5, 4 }; //connect to the row pinouts of the keypad
-byte colPins[3] = { 3 , 2 , 1 }; //connect to the column pinouts of the keypad
+byte rowPins[4] = { 7, 6, 5, 4 }; //connectez-vous à la ligne pinouts du clavier
+byte colPins[3] = { 3 , 2 , 1 }; //connectez-vous à la colonne des brochures du clavier
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, 4, 3);
 
 char tempsDePartie[6] = { 0,0,1,5,0,0 }; //Par defaut 15 minutes
