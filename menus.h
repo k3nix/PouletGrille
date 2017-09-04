@@ -10,7 +10,7 @@
 #endif
 
 bool setupModeJeu();
-char setupTempsDePartie();
+unsigned int setupTempsDePartie();
 
 #endif
 
