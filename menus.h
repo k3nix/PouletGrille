@@ -9,9 +9,8 @@
 	#include "WProgram.h"
 #endif
 
-bool choixJeu();
-//void setupTempsDePartie();
-int setupTempsDePartie();
+bool setupModeJeu();
+char setupTempsDePartie();
 
 #endif
 

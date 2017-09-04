@@ -13,9 +13,8 @@ extern LiquidCrystal LCD;
 extern Keypad keypad;
 extern const char NO_KEY;
 
-//char tempsDePartie[6] = { 0,0,1,5,0,0 }; //Par defaut 15 minutes
 
-bool choixJeu()
+bool setupModeJeu()  //corriger la fonction !!
 {
 	int fin = 0;
 	int T_boutons[3];
@@ -60,20 +59,20 @@ bool choixJeu()
 		{
 			if (modeCle == true)
 			{
-				LCD.setCursor(0, 2);
+				LCD.setCursor(0, 1);
 				LCD.print("Cles Desactive  ");
 				modeCle = false;
 				delay(2000);
-				LCD.setCursor(0, 2);
+				LCD.setCursor(0, 1);
 				LCD.print("                ");
 			}
 			else
 			{
-				LCD.setCursor(0, 2);
+				LCD.setCursor(0, 1);
 				LCD.print("Cles Active     ");
 				modeCle = true;
 				delay(2000);
-				LCD.setCursor(0, 2);
+				LCD.setCursor(0, 1);
 				LCD.print("                ");
 			}
 		}
@@ -82,20 +81,20 @@ bool choixJeu()
 		{
 			if (modeCode == true)
 			{
-				LCD.setCursor(0, 2);
+				LCD.setCursor(0, 1);
 				LCD.print("Code Desactive  ");
-				modeCle = false;
+				modeCode = false;
 				delay(2000);
-				LCD.setCursor(0, 2);
+				LCD.setCursor(0, 1);
 				LCD.print("                ");
 			}
 			else
 			{
-				LCD.setCursor(0, 2);
+				LCD.setCursor(0, 1);
 				LCD.print("Code Active     ");
 				modeCode = true;
 				delay(2000);
-				LCD.setCursor(0, 2);
+				LCD.setCursor(0, 1);
 				LCD.print("                ");
 			}
 		}
@@ -104,20 +103,20 @@ bool choixJeu()
 		{
 			if (modeFils == true)
 			{
-				LCD.setCursor(0, 2);
+				LCD.setCursor(0, 1);
 				LCD.print("Fils Desactive  ");
 				modeFils = false;
 				delay(2000);
-				LCD.setCursor(0, 2);
+				LCD.setCursor(0, 1);
 				LCD.print("                ");
 			}
 			else
 			{
-				LCD.setCursor(0, 2);
+				LCD.setCursor(0, 1);
 				LCD.print("Fils Active     ");
 				modeFils = true;
 				delay(2000);
-				LCD.setCursor(0, 2);
+				LCD.setCursor(0, 1);
 				LCD.print("                ");
 			}
 		}
@@ -127,6 +126,8 @@ bool choixJeu()
 
 			fin = 1;
 			delay(2000);
+
+			//setupcode();
 		}
 
 		if (digitalRead(pinBT1) && digitalRead(pinBT2)) // mode test
@@ -140,96 +141,8 @@ bool choixJeu()
 	return modeCle, modeCode, modeFils;
 }
 
-/*
-void setupTempsDePartie()
-{
-	int touche = 0;
-	int placementEcran = 0;
-	int i = 0;
-	int t = 0;
-	LCD.clear();
-	LCD.setCursor(0, 0);
-	LCD.print("Temps de partie?");
-	LCD.setCursor(1, 0);
 
-	while (i < 3) // 3 groupes de 2 chiffres hh:mm:ss
-	{
-		int J = 0;
-		while (J < 2) // recuperation des deux chiffres
-		{
-			char key = keypad.getKey(); // affiche le keypad
-
-			if (key != NO_KEY)//si une touche est préssée
-			{
-				LCD.setCursor(placementEcran, 1);
-				LCD.print(key);
-				tempsDePartie[t] = key;
-				placementEcran += 1;
-				touche = touche + 1;
-				t++;
-				J++;
-			}
-			switch (key)
-			{
-			case '#':
-			{
-				LCD.clear();
-				LCD.setCursor(0, 0);
-				LCD.print("Temps Valide");
-
-			}
-			case '*':
-			{
-				if (placementEcran < 1)
-				{
-					touche = touche - 1;
-					placementEcran = placementEcran - 1;
-					LCD.setCursor(placementEcran, 1);
-					LCD.print(" ");
-				}
-
-			}
-			default:
-				break;
-			}
-		}
-
-		if (placementEcran == 2 || placementEcran == 5) // placer les deux points
-		{
-			LCD.setCursor(placementEcran, 1);
-			placementEcran += 1;
-
-			touche = touche - 1;
-			LCD.print(":");
-		}
-
-
-
-		touche = 0;
-		i++;
-	}
-
-
-
-
-	LCD.clear();
-	LCD.setCursor(0, 0);
-	LCD.print("Valider ?");
-
-	int compteur = 1;
-
-	while (compteur = 6)
-	{
-		LCD.setCursor(compteur, 1);
-		LCD.print(tempsDePartie[compteur]);
-		compteur++;
-	}
-
-
-	delay(500000);
-}
-*/
-int setupTempsDePartie()
+unsigned int setupTempsDePartie()
 {
 	LCD.clear();
 	LCD.setCursor(0, 0);
@@ -239,6 +152,8 @@ int setupTempsDePartie()
 	char tempsDePartie[8] = { 0,0,':',1,5,':',0,0 }; //position 3 et 6 a ne pas toucher
 	char positionChiffreARemplir = 0;
 	char tour = 0;
+
+	unsigned int tempsDePartieEnSecondes = 0;
 
 
 	while (tour == 8) //on passe 6 fois, 1 pour chaque chiffre + 2 pour les ":"
@@ -271,5 +186,6 @@ int setupTempsDePartie()
 
 	}
 
+	return tempsDePartieEnSecondes;
 }
 

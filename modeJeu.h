@@ -9,7 +9,7 @@
 	#include "WProgram.h"
 #endif
 
-void cle();
+bool cle();
 
 void code();
 
