@@ -6,27 +6,23 @@
 #include "LiquidCrystal.h"
 #include "Keypad.h"
 
-<<<<<<< HEAD
-=======
-
->>>>>>> Mode
-extern int pinBT1, pinBT2, pinBT3, pinBT4, pinBT5, pinCLE1, pinCLE2, pinCLE3; // ici les pins ou sont branchés les boutons
+extern int pinBT1, pinBT2, pinBT3, pinBT4, pinBT5, pinCLE1, pinCLE2, pinCLE3; // ici les pins ou sont branchÃ©s les boutons
 extern LiquidCrystal LCD;
 extern Keypad keypad;
 extern const char NO_KEY;
-<<<<<<< HEAD
 
-void cle() // mode clé uniquement
+
+void cle() // mode clÃ© uniquement
 =======
 #define OPE 0
 #define ARMEE 1
 #define DESARMER 2
 #define BOOM 3
-int bombEtat = 0; //0 = Opérassionnel, 1 = Armée, 2 = Désarmer, 3 = Boom 
+int bombEtat = 0; //0 = OpÃ©rassionnel, 1 = ArmÃ©e, 2 = DÃ©sarmer, 3 = Boom 
 char key = keypad.getKey(); // affiche le keypad
 
 		void cle() // mode Cle uniquement
->>>>>>> Mode
+
 {
 	bool Cle();
 	{
@@ -36,7 +32,7 @@ char key = keypad.getKey(); // affiche le keypad
 		T_cle[1] = pinCLE2;
 		T_cle[2] = pinCLE3;
 
-<<<<<<< HEAD
+
 	while (true) //
 	{
 
@@ -71,9 +67,9 @@ char key = keypad.getKey(); // affiche le keypad
 
 void code() // mode code uniquement
 {
-=======
+
 		bool Cle = false;
->>>>>>> Mode
+
 
 	}
 }
@@ -100,7 +96,7 @@ void code() // mode code uniquement
 					{
 
 
-						if (key != NO_KEY)//si une touche est préssée
+						if (key != NO_KEY)//si une touche est prÃ©ssÃ©e
 						{
 							LCD.setCursor(placementEcran, 1);
 							LCD.print(key);
@@ -154,7 +150,7 @@ void code() // mode code uniquement
 					LCD.clear();
 					LCD.setCursor(0, 0);
 					delay(100);
-					LCD.print("Entre Le Code :"); //si la touche de désarmement # est pressée, l'utilisateur peux entrer le code.
+					LCD.print("Entre Le Code :"); //si la touche de dÃ©sarmement # est pressÃ©e, l'utilisateur peux entrer le code.
 					while (i < 3)
 					{
 						int J = 0;
@@ -162,7 +158,7 @@ void code() // mode code uniquement
 						{
 
 
-							if (key != NO_KEY)//si une touche est préssée
+							if (key != NO_KEY)//si une touche est prÃ©ssÃ©e
 							{
 								LCD.setCursor(placementEcran, 1);
 								LCD.print(key);
@@ -206,7 +202,7 @@ void code() // mode code uniquement
 
 					if (reslutaCode == true) {
 						LCD.clear();
-						bombEtat = DESARMER; //la bombe passe a l'etat désarmer.
+						bombEtat = DESARMER; //la bombe passe a l'etat dÃ©sarmer.
 
 					}
 				}
@@ -222,7 +218,7 @@ void code() // mode code uniquement
 		
 		//-------------------------------------- fin des fonctions primaires
 
-		void cleCode() //mode code + mode clé
+		void cleCode() //mode code + mode clÃ©
 		{
 
 		}
@@ -237,12 +233,12 @@ void code() // mode code uniquement
 
 		}
 
-		void cleCodeFils() // mode clé + code + fils
+		void cleCodeFils() // mode clÃ© + code + fils
 		{
 
 		}
 
-<<<<<<< HEAD
+
 void modeDrapeaux() // mode drapeaux 
 {
 
@@ -250,8 +246,6 @@ void modeDrapeaux() // mode drapeaux
 
 //.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 // Fin des fonctions principales inserer les fonctions annexes en dessous
-=======
+
 		//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 		// Fin des fonctions principales inserer les fonctions annexes en dessous
-	
->>>>>>> Mode
