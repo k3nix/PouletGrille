@@ -1,6 +1,4 @@
-// 
-// 
-// 
+
 
 #include "menus.h"
 #include "LiquidCrystal.h"
@@ -140,9 +138,96 @@ bool setupModeJeu()  //corriger la fonction !!
 
 	return modeCle, modeCode, modeFils;
 }
+/*
+unsigned long setupTempsDePartie()
+{
+	int touche = 0;
+	int placementEcran = 0;
+	int i = 0;
+	int t = 0;
+
+	char tempsDePartie[8] = { 0,0,':',1,5,':',0,0 }; //position 3 et 6 a ne pas toucher
+
+	LCD.clear();
+	LCD.setCursor(0, 0);
+	LCD.print("Temps de partie?");
+	LCD.setCursor(1, 0);
+
+	while (i < 3) // 3 groupes de 2 chiffres hh:mm:ss
+	{
+		int J = 0;
+		while (J < 2) // recuperation des deux chiffres
+		{
+			char key = keypad.getKey(); // affiche le keypad
+
+			if (key != NO_KEY)//si une touche est préssée
+			{
+				LCD.setCursor(placementEcran, 1);
+				LCD.print(key);
+				tempsDePartie[t] = key;
+				placementEcran += 1;
+				touche = touche + 1;
+				t++;
+				J++;
+			}
+
+			switch (key)
+			{
+			case '#':
+			{
+				LCD.clear();
+				LCD.setCursor(0, 0);
+				LCD.print("Temps Valide");
+
+			}
+			case '*':
+			{
+				if (placementEcran < 1)
+				{
+					touche = touche - 1;
+					placementEcran = placementEcran - 1;
+					LCD.setCursor(placementEcran, 1);
+					LCD.print(" ");
+				}
+
+			}
+			default:
+				break;
+			}
+		}
+
+		if (placementEcran == 2 || placementEcran == 5) // placer les deux points
+		{
+			LCD.setCursor(placementEcran, 1);
+			placementEcran += 1;
+
+			touche = touche - 1;
+			LCD.print(":");
+		}
 
 
-unsigned int setupTempsDePartie()
+
+		touche = 0;
+		i++;
+	}
+
+
+	LCD.clear();
+	LCD.setCursor(0, 0);
+	LCD.print("Valider ?");
+
+
+
+
+	delay(500000);
+	unsigned long converti = 0;
+
+	//converti = convertTempsPartieSecondes();
+	return converti;
+}
+*/
+
+unsigned long setupTempsDePartie()
 {
 	LCD.clear();
 	LCD.setCursor(0, 0);
@@ -150,42 +235,145 @@ unsigned int setupTempsDePartie()
 	LCD.setCursor(1, 0); // ligne du bas 1 ere case
 
 	char tempsDePartie[8] = { 0,0,':',1,5,':',0,0 }; //position 3 et 6 a ne pas toucher
-	char positionChiffreARemplir = 0;
-	char tour = 0;
+	int tour = 0;
 
-	unsigned int tempsDePartieEnSecondes = 0;
+	unsigned int tempsSeconde = 1;
 
+	LCD.setCursor(0, 1);
+	LCD.print("..:..:..");
 
-	while (tour == 8) //on passe 6 fois, 1 pour chaque chiffre + 2 pour les ":"
+	while (tour != 8) //on passe 6 fois, 1 pour chaque chiffre + 2 pour les ":"
 	{
 
-		char chiffreEntre = keypad.getKey(); //recupere la touche presse
+		char saisie = keypad.getKey(); //recupere la touche presse
 
-		if (chiffreEntre != NO_KEY) //si la recuperation n'es pas vide
+		if (tour == 2 | tour == 5) //sur les deux points
 		{
-			if (tour != 3 || 6)
+			tour += 1;
+			LCD.setCursor(tour, 1);
+
+		}
+
+		if (saisie != NO_KEY)//si une touche est préssée
+		{
+			switch (saisie)
 			{
-				tempsDePartie[tour] = chiffreEntre;
+			case '#': //touche valider
+			{
+				if (tour != 8)
+				{
+					LCD.setCursor(0, 0);
+					LCD.print("! ! ! ! ! ! ! ! ");
+					delay(1000);
+					LCD.setCursor(0, 0);
+					LCD.print("Completez temps!");
+					delay(2000);
+					LCD.setCursor(0, 0);
+					LCD.print("Temps de partie?");
+					LCD.setCursor(tour, 1);
+					break;
+				}
+				else
+				{
+					LCD.clear();
+					LCD.setCursor(0, 0);
+					LCD.print("Temps Valide");
+				}
 
-				LCD.setCursor(tour, 1);
-				LCD.print(chiffreEntre);
 
-				tour++;
+
 			}
-			else
+			case '*': // touche corriger
 			{
-				tour++;
+				LCD.setCursor(0, 0);
+				LCD.print("CORR");
+				delay(500);
+
+				LCD.setCursor(0, 0);
+				LCD.print("Temps de partie?");
+
+				switch (tour)
+				{
+				case -1: //curseur au debut impossible de suppr
+				{
+					break;
+				}
+				case 3:
+				{
+					tour -= 1;
+					tour -= 1;
+					LCD.setCursor(tour, 1);
+					LCD.print('.');
+					LCD.setCursor(tour, 1);
+					tour -= 1;
+					break;
+				}
+				case 6:
+				{
+					tour -= 1;
+					tour -= 1;
+					LCD.setCursor(tour, 1);
+					LCD.print('.');
+					LCD.setCursor(tour, 1);
+					tour -= 1;
+					break;
+				}
+
+				default:
+					tour -= 1;
+					LCD.setCursor(tour, 1);
+					LCD.print('.');
+					LCD.setCursor(tour, 1);
+					tour -= 1;
+
+					break;
+				}
+				break;
+			}
+			default:
+				tempsDePartie[tour] = saisie;
+
 				LCD.setCursor(tour, 1);
-				LCD.print(tempsDePartie[tour]);
+				LCD.print(saisie);
+				tour++;
+				break;
 			}
 
 
 		}
 
 
-
 	}
+	delay(2000);
 
-	return tempsDePartieEnSecondes;
+
+	//tempsSeconde = convertTempsPartieSecondes(tempsDePartie[0], tempsDePartie[1], tempsDePartie[3], tempsDePartie[4], tempsDePartie[6], tempsDePartie[7]);
+
+	LCD.clear();
+	LCD.setCursor(10, 1);
+	LCD.print("fin");
+	//delay(10000);
+
+	return tempsSeconde;
 }
+
+
+unsigned long convertTempsPartieSecondes(char heures1, char heures2, char minutes1, char minutes2, char secondes1, char secondes2)
+{
+	unsigned long tempsConverti = 0;
+
+	unsigned int heures = heures1 + heures2;
+	unsigned int minutes = minutes1 + minutes2;
+	unsigned int secondes = secondes1 + secondes2;
+
+
+	tempsConverti = heures;
+
+
+
+
+	return tempsConverti;
+}
+
+
 

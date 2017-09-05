@@ -42,7 +42,7 @@ void setup() //fonction lancée une seule fois au demmarage de l'arduino
 
 	LCD.setCursor(0, 1); // on passe a la deuciemme ligne
 	LCD.print("Version 0.42");
-	delay(2000);
+	delay(500);
 
 
 	LCD.clear();
@@ -66,8 +66,8 @@ void setup() //fonction lancée une seule fois au demmarage de l'arduino
 void loop()
 {
 	
-	//setupTempsDePartie();
-	setupModeJeu();
+	setupTempsDePartie();
+	//setupModeJeu();
 	
 }
 

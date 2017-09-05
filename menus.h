@@ -10,7 +10,8 @@
 #endif
 
 bool setupModeJeu();
-unsigned int setupTempsDePartie();
+unsigned long setupTempsDePartie();
+unsigned long convertTempsPartieSecondes(char heures1, char heures2, char minutes1, char minutes2, char secondes1, char secondes2);
 
 #endif
 
