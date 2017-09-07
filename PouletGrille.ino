@@ -6,6 +6,7 @@
 #include "Keypad.h"
 #include "Arduino.h"
 #include <LiquidCrystal.h>
+#include "ServSeg\SevSeg.h"
 
 
 //bibliotheque interne
@@ -14,7 +15,7 @@ using namespace std;
 
 // ---------------------------------------------------------Espace variables
 int pinBT1 = 52, pinBT2 = 51, pinBT3 = 50, pinBT4 = 49, pinBT5 = 48, pinCLE1 = 47, pinCLE2 = 46, pinCLE3 = 45; // ici les pins ou sont branchés les boutons
-
+int ledCle = A0, ledCode = A1, ledFils = A2;
 LiquidCrystal LCD(13, 12, 11, 10, 9, 8); // creation de l'objet LCD portée globale
 
 
@@ -42,8 +43,7 @@ void setup() //fonction lancée une seule fois au demmarage de l'arduino
 
 	LCD.setCursor(0, 1); // on passe a la deuciemme ligne
 	LCD.print("Version 0.42");
-	delay(500);
-
+	delay(1000);
 
 	LCD.clear();
 
@@ -58,18 +58,24 @@ void setup() //fonction lancée une seule fois au demmarage de l'arduino
 	
 	pinMode(44, OUTPUT); //pin du relais --> Lumiere G
 
-	//pinMode(A0, OUTPUT);
-	//pinMode(A1, OUTPUT);
-	//pinMode(A2, OUTPUT);
+	pinMode(A0, OUTPUT);
+	pinMode(A1, OUTPUT);
+	pinMode(A2, OUTPUT);
+
+	digitalWrite(44, HIGH);
+
 }
 
 void loop()
 {
+	demoLancement();
+
+
+	
+
 	
 	setupTempsDePartie();
 	//setupModeJeu();
 	
 }
-
-
 

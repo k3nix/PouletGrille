@@ -10,7 +10,7 @@
 #endif
 
 void modeTest();
-void clignioteG();
+void demoLancement();
 
 #endif
 

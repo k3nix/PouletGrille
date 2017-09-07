@@ -105,14 +105,31 @@ void modeTest()
 	}
 }
 
-void clignioteG()
+void demoLancement()
 {
-	do
+	int temps = 50;
+	int C = 0;
+
+	while (C != 5)
 	{
-		digitalWrite(44, HIGH);
-		delay(1000);
+
 		digitalWrite(44, LOW);
-		delay(1000); 
-	} while (true);
+
+		digitalWrite(A0, HIGH);
+		delay(temps);
+		digitalWrite(A1, HIGH);
+		delay(temps);
+		digitalWrite(A2, HIGH);
+		delay(temps);
+		digitalWrite(A0, LOW);
+		delay(temps);
+		digitalWrite(A1, LOW);
+		delay(temps);
+		digitalWrite(A2, LOW);
+		delay(temps);
+		digitalWrite(44, HIGH);
+		delay(temps);
+		C = C + 1;
+	}
 	
 }
