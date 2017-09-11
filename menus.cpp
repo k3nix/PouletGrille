@@ -10,11 +10,12 @@ extern int pinBT1, pinBT2, pinBT3, pinBT4, pinBT5, pinCLE1, pinCLE2, pinCLE3;
 extern LiquidCrystal LCD;
 extern Keypad keypad;
 extern const char NO_KEY;
+extern int ledCle, ledCode, ledFils;
 
 
 bool setupModeJeu()  //corriger la fonction !!
 {
-	int fin = 0;
+	int fin = 1;
 	int T_boutons[3];
 	T_boutons[0] = pinBT1;
 	T_boutons[1] = pinBT2;
@@ -24,12 +25,13 @@ bool setupModeJeu()  //corriger la fonction !!
 	bool modeCode = false;
 	bool modeFils = false;
 
+
 	LCD.clear();
 	LCD.setCursor(0, 0);
 	LCD.print("Mode de jeu ?");
 	delay(200);
 
-	while (fin == 0)
+	while (fin != 0)
 	{
 		char key = keypad.getKey();
 
@@ -53,13 +55,14 @@ bool setupModeJeu()  //corriger la fonction !!
 
 		}
 
-		if (digitalRead(pinBT1) > 0)
+		if (digitalRead(pinBT1) != 0)
 		{
 			if (modeCle == true)
 			{
 				LCD.setCursor(0, 1);
 				LCD.print("Cles Desactive  ");
 				modeCle = false;
+				digitalWrite(ledCle, LOW);
 				delay(2000);
 				LCD.setCursor(0, 1);
 				LCD.print("                ");
@@ -69,19 +72,21 @@ bool setupModeJeu()  //corriger la fonction !!
 				LCD.setCursor(0, 1);
 				LCD.print("Cles Active     ");
 				modeCle = true;
+				digitalWrite(ledCle, HIGH);
 				delay(2000);
 				LCD.setCursor(0, 1);
 				LCD.print("                ");
 			}
 		}
 
-		if (digitalRead(pinBT2) > 0)
+		if (digitalRead(pinBT2) != 0)
 		{
 			if (modeCode == true)
 			{
 				LCD.setCursor(0, 1);
 				LCD.print("Code Desactive  ");
 				modeCode = false;
+				digitalWrite(ledCode, LOW);
 				delay(2000);
 				LCD.setCursor(0, 1);
 				LCD.print("                ");
@@ -91,19 +96,21 @@ bool setupModeJeu()  //corriger la fonction !!
 				LCD.setCursor(0, 1);
 				LCD.print("Code Active     ");
 				modeCode = true;
+				digitalWrite(ledCode, HIGH);
 				delay(2000);
 				LCD.setCursor(0, 1);
 				LCD.print("                ");
 			}
 		}
 
-		if (digitalRead(pinBT3) > 0)
+		if (digitalRead(pinBT3) != 0)
 		{
 			if (modeFils == true)
 			{
 				LCD.setCursor(0, 1);
 				LCD.print("Fils Desactive  ");
 				modeFils = false;
+				digitalWrite(ledFils, LOW);
 				delay(2000);
 				LCD.setCursor(0, 1);
 				LCD.print("                ");
@@ -113,20 +120,13 @@ bool setupModeJeu()  //corriger la fonction !!
 				LCD.setCursor(0, 1);
 				LCD.print("Fils Active     ");
 				modeFils = true;
+				digitalWrite(ledFils, HIGH);
 				delay(2000);
 				LCD.setCursor(0, 1);
 				LCD.print("                ");
 			}
 		}
 
-		if (digitalRead(pinBT5) > 0) //valider
-		{
-
-			fin = 1;
-			delay(2000);
-
-			//setupcode();
-		}
 
 		if (digitalRead(pinBT1) && digitalRead(pinBT2)) // mode test
 		{
@@ -350,8 +350,7 @@ unsigned long setupTempsDePartie()
 	//tempsSeconde = convertTempsPartieSecondes(tempsDePartie[0], tempsDePartie[1], tempsDePartie[3], tempsDePartie[4], tempsDePartie[6], tempsDePartie[7]);
 
 	LCD.clear();
-	LCD.setCursor(10, 1);
-	LCD.print("fin");
+
 	//delay(10000);
 
 	return tempsSeconde;

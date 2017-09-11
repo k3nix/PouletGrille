@@ -6,7 +6,6 @@
 #include "Keypad.h"
 #include "Arduino.h"
 #include <LiquidCrystal.h>
-#include "ServSeg\SevSeg.h"
 
 
 //bibliotheque interne
@@ -69,13 +68,9 @@ void setup() //fonction lancée une seule fois au demmarage de l'arduino
 void loop()
 {
 	demoLancement();
-
-
-	
-
 	
 	setupTempsDePartie();
-	//setupModeJeu();
+	setupModeJeu();
 	
 }
 
