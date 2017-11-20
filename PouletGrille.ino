@@ -8,8 +8,6 @@
 #include <Keypad.h>
 
 
-//bibliotheque interne
-//#include <string.h
 using namespace std;
 // ---------------------------------------------------------Espace variables
 int pinBT1 = 52, pinBT2 = 51, pinBT3 = 50, pinBT4 = 49, pinBT5 = 48, pinCLE1 = 47, pinCLE2 = 46, pinCLE3 = 45; // ici les pins ou sont branchés les boutons
@@ -28,7 +26,7 @@ byte colPins[3] = { 3 , 2 , 1 }; //connectez-vous à la colonne des brochures du 
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, 4, 3);
 
 
-
+//--------------------------------------------------------Fin espace variables
 
 
 void setup() //fonction lancée une seule fois au demmarage de l'arduino
@@ -66,10 +64,9 @@ void setup() //fonction lancée une seule fois au demmarage de l'arduino
 
 void loop()
 {
-	demoLancement();
-	
-	setupTempsDePartie();
-	setupModeJeu();
+	demoLancement(); //petite animation au demarrage
+	setupTempsDePartie(); // retourne le temps de la partie en seconde
+	setupModeJeu(); // retourne les modes de jeu choisis
 	
 }
 

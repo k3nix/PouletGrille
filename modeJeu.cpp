@@ -20,7 +20,7 @@ int bombEtat = 0; //0 = Opérationel, 1 = Armé, 2 = Désarmé, 3 = Boom
 char key = keypad.getKey(); // affiche le keypad
 
 
-bool cle() // mode Cle uniquement
+bool cle() // mode Cle uniquement #ADRIEN
 
 {
 
@@ -34,7 +34,7 @@ bool cle() // mode Cle uniquement
 	return false;
 }
 
-void code(int codeDesamorcage)// mode Code uniquement
+void code(int codeDesamorcage)// mode Code uniquement # SIMON
 {
 	int touche = 0;
 	int placementEcran = 0;
@@ -180,33 +180,33 @@ void code(int codeDesamorcage)// mode Code uniquement
 }
 
 
-void fils() // mode fils uniquement
+void fils() // mode fils uniquement ADRIEN
 {
 	
 }
 
 
-void cleCode() //mode code + mode clé
+void cleCode() //mode code + mode clé # SIMON
 {
 
 }
 
-void cleFils() // mode cle + fils
+void cleFils() // mode cle + fils # ADRIEN
 {
 
 }
 
-void codeFils() // mode code + fils
+void codeFils() // mode code + fils # SIMON
 {
 
 }
 
-void cleCodeFils() // mode clé + code + fils
+void cleCodeFils() // mode clé + code + fils #Simon
 {
 
 }
 
-void modeDrapeaux() // mode drapeaux 
+void modeDrapeaux() // mode drapeaux # SIMON
 {
 
 }
