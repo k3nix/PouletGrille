@@ -4,7 +4,7 @@
 
 #include "modeJeu.h"
 #include "LiquidCrystal.h"
-#include "Keypad.h"
+#include <Keypad.h>
 
 extern int pinBT1, pinBT2, pinBT3, pinBT4, pinBT5, pinCLE1, pinCLE2, pinCLE3; // ici les pins ou sont branchés les boutons
 extern LiquidCrystal LCD;

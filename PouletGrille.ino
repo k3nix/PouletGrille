@@ -3,15 +3,14 @@
 #include "controlLeds.h"
 #include "menus.h"
 #include "modeJeu.h"
-#include "Keypad.h"
 #include "Arduino.h"
-#include <LiquidCrystal.h>
+#include "LiquidCrystal.h"
+#include <Keypad.h>
 
 
 //bibliotheque interne
 //#include <string.h
 using namespace std;
-
 // ---------------------------------------------------------Espace variables
 int pinBT1 = 52, pinBT2 = 51, pinBT3 = 50, pinBT4 = 49, pinBT5 = 48, pinCLE1 = 47, pinCLE2 = 46, pinCLE3 = 45; // ici les pins ou sont branchés les boutons
 int ledCle = A0, ledCode = A1, ledFils = A2;

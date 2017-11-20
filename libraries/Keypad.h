@@ -33,7 +33,7 @@
 #ifndef KEYPAD_H
 #define KEYPAD_H
 
-#include <libraries\Keypad\utility\Key.h>
+#include "utility/Key.h"
 
 // Arduino versioning.
 #if defined(ARDUINO) && ARDUINO >= 100
